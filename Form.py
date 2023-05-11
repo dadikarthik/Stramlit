@@ -55,3 +55,13 @@ storage_thread.join()
 # Cleanup: Stop the background thread
 data_queue.put(None)
 storage_thread.join()
+
+# Get user input
+user_data = st.text_input("Enter data")
+
+# Check if user has submitted data
+if st.button("Save"):
+    # Open the file in append mode and write the data
+    with open('data.txt', 'a') as file:
+        file.write(user_data + '\n')
+    st.success("Data saved successfully!")
